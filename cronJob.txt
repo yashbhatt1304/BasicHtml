@@ -1,0 +1,3 @@
+Add below code for checking new commit through Shell.
+
+* * * * * /bin/bash /home/ubuntu/checkCommitBash.sh
