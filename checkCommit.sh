@@ -3,9 +3,9 @@
 cd /home/ubuntu/BasicHtml_CICD/
 git pull
 
-newcommit=$(git log --pretty=format:"%H" -1)
+value=$(python3 -c "from checkCommitPython import commitCheck; commitCheck")
 
-if [ "$(cat /home/ubuntu/oldcommit.txt)" = "$newcommit" ]
+if [ "value" = "False" ]
 then
         echo "No Action Required"
 else
@@ -13,7 +13,6 @@ else
         sudo cp -r /home/ubuntu/BasicHtml_CICD/ /var/www/html/  
         sudo service nginx restart
         echo "We've a new Commit! Running pipeline."
-        echo $(git log --pretty=format:"%H" -1) > oldcommit.txt
         echo $(pwd)
-        echo $newcommit
+        echo $value
 fi
